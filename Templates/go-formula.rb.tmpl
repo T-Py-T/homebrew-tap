@@ -1,0 +1,18 @@
+class ToolName < Formula
+  desc "DESCRIPTION"
+  homepage "HOMEPAGE_URL"
+  url "SOURCE_ARCHIVE_URL"
+  version "VERSION"
+  sha256 "SOURCE_SHA256"
+  license "SPDX_LICENSE"
+
+  depends_on "go" => :build
+
+  def install
+    system "go", "build", *std_go_args(ldflags: "-s -w"), "./cmd/tool-name"
+  end
+
+  test do
+    assert_match version.to_s, shell_output("#{bin}/tool-name --version")
+  end
+end

@@ -1,0 +1,18 @@
+cask "mac-ogcs" do
+  arch arm: "arm64", intel: "x86_64"
+
+  version "VERSION"
+  sha256 arm:   "ARM64_SHA256",
+         intel: "X86_64_SHA256"
+
+  url "https://github.com/T-Py-T/mac-ogcs/releases/download/v#{version}/mac-ogcs_#{version}_darwin_#{arch}.tar.gz"
+  name "mac-ogcs"
+  desc "Privacy-first Outlook-to-Google Calendar sync for macOS terminals"
+  homepage "https://github.com/T-Py-T/mac-ogcs"
+
+  binary "mac-ogcs"
+
+  caveats <<~EOS
+    Run `mac-ogcs init` after installation. Credentials are stored in macOS Keychain.
+  EOS
+end
