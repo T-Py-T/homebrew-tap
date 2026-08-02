@@ -14,7 +14,7 @@ cask "mac-ogcs" do
   ]
   download_headers << "Authorization: Bearer #{github_token}" if github_token
 
-  url "https://api.github.com/repos/T-Py-T/mac-ogcs/releases/assets/#{arch}",
+  url "https://api.github.com/repos/T-Py-T/mac-ogcs/releases/assets/#{arch}?version=#{version}",
       header: download_headers
   name "mac-ogcs"
   desc "Privacy-first Outlook-to-Google Calendar sync for terminals"
