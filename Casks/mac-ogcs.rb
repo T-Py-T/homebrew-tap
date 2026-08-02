@@ -20,6 +20,7 @@ cask "mac-ogcs" do
   desc "Privacy-first Outlook-to-Google Calendar sync for terminals"
   homepage "https://github.com/T-Py-T/mac-ogcs"
 
+  depends_on :macos
   container type: :tar
 
   binary "mac-ogcs"
