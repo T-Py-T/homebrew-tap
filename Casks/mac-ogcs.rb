@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 cask "mac-ogcs" do
-  arch arm: "499247898", intel: "499247894"
+  arch arm: "499266198", intel: "499266201"
 
-  version "0.1.0-alpha.4"
-  sha256 arm:   "cba9b9a826ce43a553858d8cf424d41b1e3e4d9776b6f5f58f85facf4d6b2d1b",
-         intel: "e94b814e594bd2adcf4607d604947d25ec51d9d00219a52a351d2a181a5695e8"
+  version "0.1.0-alpha.5"
+  sha256 arm:   "3c9cc173fa6c340f3461963255f58820fed4f10ebe038f968827d6f8ec1cfebc",
+         intel: "11ba6f852dc419088970f2309d5bb553740c9531ccf71f58d65a65121666d192"
 
   github_token = ENV.fetch("HOMEBREW_GITHUB_API_TOKEN", nil)
   download_headers = [
@@ -28,7 +28,8 @@ cask "mac-ogcs" do
   caveats <<~EOS
     This private pre-release requires HOMEBREW_GITHUB_API_TOKEN when Homebrew
     downloads or upgrades it. Run `mac-ogcs`; press n to Sync now, r for a
-    persistent recurring schedule, or g for Google colour settings.
+    persistent recurring schedule, or g for Google source-calendar name and
+    colour settings.
 
     The build is checksummed but not Developer ID notarized. This Cask preserves
     normal macOS quarantine metadata and does not bypass Gatekeeper. Maintainer
