@@ -16,7 +16,15 @@ After a package has been published:
 brew install --cask T-Py-T/tap/mac-ogcs
 ```
 
-A private tap and a private release download use separate credentials. No package in this repository may embed a token. The mac-ogcs release will document its artifact authentication before the Cask is activated.
+A private tap and a private release download use separate credentials. No
+package in this repository embeds a token. Before installing or upgrading
+mac-ogcs, expose a GitHub token with read access to the private application
+repository:
+
+```sh
+export HOMEBREW_GITHUB_API_TOKEN="$(gh auth token)"
+brew install --cask T-Py-T/tap/mac-ogcs
+```
 
 ## Repository layout
 
@@ -37,9 +45,15 @@ mac-ogcs is a terminal application, but its prebuilt release belongs in a Cask: 
 
 Do not add quarantine-removal hooks. Release artifacts must remain compatible with normal macOS Gatekeeper checks.
 
-## Future mac-ogcs package
+## mac-ogcs package
 
-The prepared template is [`Templates/mac-ogcs.rb.tmpl`](Templates/mac-ogcs.rb.tmpl). It intentionally is not an active Cask yet: a Homebrew package must not point at a nonexistent release or use placeholder checksums.
+The active private pre-release is [`Casks/mac-ogcs.rb`](Casks/mac-ogcs.rb). It
+uses GitHub's authenticated release-asset API with immutable per-architecture
+asset IDs and SHA-256 checksums. The reusable starting point remains
+[`Templates/mac-ogcs.rb.tmpl`](Templates/mac-ogcs.rb.tmpl).
+
+The first proof is not Developer ID notarized. The Cask deliberately preserves
+quarantine metadata and contains no Gatekeeper bypass hook.
 
 ## Documentation
 
