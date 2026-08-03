@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 cask "mac-ogcs" do
-  arch arm: "499467194", intel: "499467197"
+  arch arm: "499519946", intel: "499519944"
 
-  version "0.1.0-alpha.7"
-  sha256 arm:   "709791de009c76c7675ab366d0c224610a2dbed1f7671ab0cb57913fd8949743",
-         intel: "f43f93a134440c4d44478ee954b4727806d7761665942db862f7308bd1b6a5f1"
+  version "0.1.0-alpha.8"
+  sha256 arm:   "5422d3ca130c8db702988f19445336271b56c6d40407621de19a4aa1b60bddcd",
+         intel: "ccea8ed8970c9356ce70c3ab33ae9dcb5a7eb8db3568b3fb6f44174b9b733e81"
 
   github_token = ENV.fetch("HOMEBREW_GITHUB_API_TOKEN", nil)
   download_headers = [
