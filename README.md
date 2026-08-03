@@ -30,10 +30,16 @@ brew install --cask T-Py-T/tap/mac-ogcs
 
 - `Casks/` contains prebuilt terminal binaries and macOS applications.
 - `Formula/` contains tools built from source or distributed as Homebrew bottles.
+- `lib/` contains reusable Ruby support loaded by generated Casks.
 - `Templates/` contains non-installable starting points for new packages.
 - `.github/workflows/` contains the workflows generated and recommended by Homebrew for tap validation and bottle publishing.
 
 mac-ogcs is a terminal application, but its prebuilt release belongs in a Cask: Homebrew's `binary` artifact links the executable without requiring a desktop `.app` bundle or a compiler on the destination Mac.
+
+The mac-ogcs Cask loads its private-release download strategy from `lib/`. The
+strategy reads `HOMEBREW_GITHUB_API_TOKEN` only when Homebrew downloads an
+asset, after Homebrew restores sensitive environment variables. Keeping the
+class outside the Cask block also satisfies Homebrew's Ruby style rules.
 
 ## Add or update a package
 
