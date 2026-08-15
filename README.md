@@ -14,6 +14,13 @@ After a package has been published:
 
 ```sh
 brew install --cask T-Py-T/tap/mac-ogcs
+brew install T-Py-T/tap/atomic
+```
+
+Upgrade installed packages with:
+
+```sh
+brew upgrade T-Py-T/tap/atomic
 ```
 
 A private tap and a private release download use separate credentials. No
