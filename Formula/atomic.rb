@@ -14,6 +14,8 @@ class Atomic < Formula
   end
 
   def fix_embedded_postgres_links
+    return unless OS.mac?
+
     native_dirs = Dir[libexec/"lib/node_modules/@bastani/atomic/node_modules/@embedded-postgres/*/native"]
     native_dirs.each do |native_dir|
       Dir["#{native_dir}/**/*"].select { |path| File.file?(path) }.each do |path|
