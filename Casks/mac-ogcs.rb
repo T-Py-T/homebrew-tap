@@ -2,22 +2,20 @@
 cask "mac-ogcs" do
   require_relative "../lib/mac_ogcs_private_repository_release_download_strategy"
 
-  depends_on :macos
-
   version "0.2.1"
 
   on_macos do
-    on_intel do
-      sha256 "27ccb06bc5d558103aff2e529c06ea9f15b215298f972aa925a3012dd023ed09"
-      url "https://github.com/T-Py-T/mac-ogcs/releases/download/v#{version}/mac-ogcs_#{version}_darwin_amd64.tar.gz",
-        verified: "github.com/T-Py-T/mac-ogcs/",
-        using: MacOgcsPrivateRepositoryReleaseDownloadStrategy
-    end
     on_arm do
       sha256 "16168658500265c30b6e2ac95f6121bebea9515fd16e188b2c690d8d4cf470ca"
       url "https://github.com/T-Py-T/mac-ogcs/releases/download/v#{version}/mac-ogcs_#{version}_darwin_arm64.tar.gz",
-        verified: "github.com/T-Py-T/mac-ogcs/",
-        using: MacOgcsPrivateRepositoryReleaseDownloadStrategy
+          verified: "github.com/T-Py-T/mac-ogcs/",
+          using:    MacOgcsPrivateRepositoryReleaseDownloadStrategy
+    end
+    on_intel do
+      sha256 "27ccb06bc5d558103aff2e529c06ea9f15b215298f972aa925a3012dd023ed09"
+      url "https://github.com/T-Py-T/mac-ogcs/releases/download/v#{version}/mac-ogcs_#{version}_darwin_amd64.tar.gz",
+          verified: "github.com/T-Py-T/mac-ogcs/",
+          using:    MacOgcsPrivateRepositoryReleaseDownloadStrategy
     end
   end
 
@@ -28,6 +26,8 @@ cask "mac-ogcs" do
   livecheck do
     skip "Auto-generated on release."
   end
+
+  depends_on :macos
 
   binary "mac-ogcs"
 
