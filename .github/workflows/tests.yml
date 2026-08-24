@@ -7,23 +7,16 @@ on:
 jobs:
   test-bot:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/homebrew/brew:main
     permissions:
       contents: read
     steps:
-      - name: Checkout
+      - name: Checkout exact pull request source
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
-      # Stage the checked-out PR as the installed tap so test-bot never falls
-      # back to the repository's remote default branch.
-      - name: Prepare exact pull request source
-        shell: bash
-        run: |
-          tap_dir="$(brew --repository)/Library/Taps/t-py-t/homebrew-tap"
-          mkdir -p "$(dirname "$tap_dir")"
-          mkdir -p "$tap_dir"
-          cp -R "$GITHUB_WORKSPACE/." "$tap_dir/"
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@a657b8b0cd35d0f65cce41fce9b24cf054b49869
 
       - name: Validate tap syntax
         env:
