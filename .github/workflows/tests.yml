@@ -12,8 +12,20 @@ jobs:
     permissions:
       contents: read
     steps:
-      - name: Checkout
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      # actions/checkout cannot write the runner file-command directory from
+      # this non-root Homebrew container. Fetch the exact PR head directly so
+      # validation still fails closed without depending on a Node action.
+      - name: Checkout exact pull request source
+        shell: bash
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          git init .
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --no-tags --depth=1 origin "refs/pull/${PR_NUMBER}/head"
+          test "$(git rev-parse FETCH_HEAD)" = "${PR_HEAD_SHA}"
+          git checkout --detach "${PR_HEAD_SHA}"
 
       # Stage the checked-out PR as the installed tap so test-bot never falls
       # back to the repository's remote default branch.
