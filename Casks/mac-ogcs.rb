@@ -10,14 +10,12 @@ cask "mac-ogcs" do
     on_arm do
       sha256 "aa584151bdbf7d0a41072aa8e50c85ce56abd7d2cc0319b62b5aa3897dabc691"
       url "https://github.com/T-Py-T/mac-ogcs/releases/download/v#{version}/mac-ogcs_#{version}_darwin_arm64.zip",
-          verified: "github.com/T-Py-T/mac-ogcs/",
-          using:    MacOgcsPrivateRepositoryReleaseDownloadStrategy
+          using: MacOgcsPrivateRepositoryReleaseDownloadStrategy
     end
     on_intel do
       sha256 "3d0fd14bd6b4d9cbad09c15d0451146edfc80ba40a177eaf461662bcae4871b2"
       url "https://github.com/T-Py-T/mac-ogcs/releases/download/v#{version}/mac-ogcs_#{version}_darwin_amd64.zip",
-          verified: "github.com/T-Py-T/mac-ogcs/",
-          using:    MacOgcsPrivateRepositoryReleaseDownloadStrategy
+          using: MacOgcsPrivateRepositoryReleaseDownloadStrategy
     end
   end
 
