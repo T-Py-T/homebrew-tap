@@ -1,6 +1,6 @@
 # Security policy
 
-This private tap is executable distribution infrastructure. Treat changes to package URLs, checksums, install hooks, and GitHub Actions as security-sensitive.
+This public tap is executable distribution infrastructure. Treat changes to package URLs, checksums, install hooks, and GitHub Actions as security-sensitive.
 
 - Never commit credentials, authenticated URLs, or tokens.
 - Preserve macOS quarantine metadata and Gatekeeper verification.
