@@ -1,12 +1,18 @@
 # T-Py-T Homebrew Tap
 
-Homebrew formulae and casks maintained by T-Py-T. The tap itself is public, so
-anyone can inspect its package definitions, checksums, templates, and validation
-workflow.
+[![brew test-bot](https://github.com/T-Py-T/homebrew-tap/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/T-Py-T/homebrew-tap/actions/workflows/tests.yml)
 
-The packages have different distribution rules. `atomic` installs from a
-public npm release. `mac-ogcs` points to a private GitHub release and therefore
-requires an authorized GitHub token when Homebrew downloads or upgrades it.
+Public [Homebrew tap](https://docs.brew.sh/How-to-Create-and-Maintain-a-Tap) for
+T-Py-T command-line tools and macOS applications. Package definitions,
+checksums, templates, and pull-request syntax validation are visible in this
+repository. `atomic` installs from a public npm release; `mac-ogcs` downloads a
+private GitHub release and requires an authorized token when Homebrew fetches or
+upgrades it.
+
+**Topics:** Homebrew · tap · formula · cask · macOS · npm · private GitHub
+releases · GitHub Actions · `brew test-bot`. **Reviewers:** [hireability
+snapshot](docs/HIREABILITY.md) · [Security policy](SECURITY.md) · [MIT
+License](LICENSE)
 
 ## Install
 
@@ -91,8 +97,6 @@ schedules, or manual dispatches.
 
 ## Documentation
 
-See [Homebrew's tap documentation](https://docs.brew.sh/How-to-Create-and-Maintain-a-Tap) and [Cask cookbook](https://docs.brew.sh/Cask-Cookbook).
-
-Security-sensitive package changes should follow [SECURITY.md](SECURITY.md).
-Repository-specific work is available under the [MIT License](LICENSE);
-packaged software remains under its own license.
+- [Homebrew tap guide](https://docs.brew.sh/How-to-Create-and-Maintain-a-Tap)
+- [Cask cookbook](https://docs.brew.sh/Cask-Cookbook)
+- [T-Py-T/chezmoi-dotfiles](https://github.com/T-Py-T/chezmoi-dotfiles) — platform Brewfiles that reference this tap for workstation bootstrap
