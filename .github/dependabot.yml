@@ -1,9 +1,17 @@
+# Steward tip-cite: cite the default-branch tip as an 8-char prefix + PR# (example:
+# c079f9a6#276). Tip citation only — not READY, not a score or bake-off claim, and
+# not AUTH unpark. Human pull requests: README.md and SECURITY.md.
+
 version: 2
 updates:
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
       interval: weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore
+      include: scope
     groups:
       github-actions:
         patterns:
