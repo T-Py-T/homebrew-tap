@@ -10,8 +10,7 @@ private GitHub release and requires an authorized token when Homebrew fetches or
 upgrades it.
 
 **Topics:** Homebrew · tap · formula · cask · macOS · npm · private GitHub
-releases · GitHub Actions · `brew test-bot`. **Reviewers:** [hireability
-snapshot](docs/HIREABILITY.md) · [Security policy](SECURITY.md) · [MIT
+releases · GitHub Actions · `brew test-bot`. **Reviewers:** [Security policy](SECURITY.md) · [MIT
 License](LICENSE)
 
 ## Install

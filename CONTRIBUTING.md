@@ -6,4 +6,3 @@ Pull requests are welcome for formulae, casks, templates, `lib/` helpers, and ta
 2. Treat security-sensitive edits per [SECURITY.md](SECURITY.md).
 3. Repository-owned changes are under the [MIT License](LICENSE); packaged software keeps its own license.
 
-For reviewer context, see [docs/HIREABILITY.md](docs/HIREABILITY.md).

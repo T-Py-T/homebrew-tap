@@ -35,7 +35,6 @@ Do not open a public issue with exploit details, live tokens, or credential mate
 ## Related documentation
 
 - [README.md](README.md) — install, package layout, and change validation
-- [docs/HIREABILITY.md](docs/HIREABILITY.md) — reviewer orientation
 - [LICENSE](LICENSE) — MIT for tap-owned files; packaged software keeps its own license
 - [T-Py-T/chezmoi-dotfiles](https://github.com/T-Py-T/chezmoi-dotfiles) — Brewfiles that consume this tap (separate security boundary)
 
