@@ -155,7 +155,7 @@ through [SECURITY.md](SECURITY.md).
 ## Related
 
 - [T-Py-T/chezmoi-dotfiles](https://github.com/T-Py-T/chezmoi-dotfiles):
-  workstation Brewfiles that reference this tap
+  the companion workstation dotfiles, with platform Brewfiles
 - [Homebrew tap guide](https://docs.brew.sh/How-to-Create-and-Maintain-a-Tap)
   and [Cask Cookbook](https://docs.brew.sh/Cask-Cookbook)
 
