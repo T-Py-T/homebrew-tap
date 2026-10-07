@@ -104,6 +104,10 @@ sync now, `r` for a recurring schedule, `g` for Google calendar settings. The
 Cask also states that the binary is Developer ID signed and notarized. It
 keeps normal quarantine metadata and has no Gatekeeper bypass hook.
 
+## Focus Owned preparation
+
+[`Templates/focus-owned.rb.tmpl`](Templates/focus-owned.rb.tmpl) prepares an Apple-silicon app and CLI package using private release downloads. It is not installable until a qualified release and checksum exist. See the [release and update handoff](docs/FOCUS_OWNED.md).
+
 ## How it's built
 
 ```text

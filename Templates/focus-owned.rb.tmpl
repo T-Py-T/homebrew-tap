@@ -1,0 +1,35 @@
+# frozen_string_literal: true
+
+# Non-installable template. Replace placeholders only after the qualified asset exists.
+# Follow the existing T-Py-T/tap private-download convention; no token is embedded.
+cask "focus-owned" do
+  require_relative "../lib/mac_ogcs_private_repository_release_download_strategy"
+
+  version "VERSION,BUILD"
+  sha256 "SHA256"
+  url "https://github.com/T-Py-T/FocusOwned/releases/download/v#{version.csv.first}-build#{version.csv.second}/FocusOwned_#{version.csv.first}_build#{version.csv.second}_darwin_arm64.zip",
+      using: MacOgcsPrivateRepositoryReleaseDownloadStrategy
+
+  name "Focus Owned"
+  desc "Owned task and project planning with private synchronization"
+  homepage "https://github.com/T-Py-T/FocusOwned"
+
+  livecheck do
+    skip "Updated by a reviewed private release asset/checksum pull request."
+  end
+
+  depends_on arch: :arm64
+  depends_on macos: ">= :sonoma"
+
+  # Keep one stable human-facing application path across versioned releases.
+  app "FocusOwned-macOS.app", target: "Focus Owned.app"
+  binary "focus-owned-axi"
+
+  # Intentionally no zap, container deletion, quarantine bypass or runtime hooks.
+  caveats <<~EOS
+    Private downloads require HOMEBREW_GITHUB_API_TOKEN with read access to
+    T-Py-T/FocusOwned, using the existing private-release download strategy.
+    Finish work and quit Focus Owned before an explicit upgrade. Ordinary upgrades
+    replace only app/CLI artifacts; app-owned data, archives and selected pins remain.
+  EOS
+end
