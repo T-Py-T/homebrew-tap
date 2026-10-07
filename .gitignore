@@ -1,0 +1,6 @@
+
+# Repo-local hook receipts and isolated validation outputs
+.local-validation.noindex/
+.ci-source-validation.noindex/
+__pycache__/
+*.py[cod]

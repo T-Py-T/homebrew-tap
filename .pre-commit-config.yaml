@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: repository-local-validation
+        name: Repository local validation
+        entry: python3 Scripts/local_checks.py --staged
+        language: system
+        pass_filenames: false
+        always_run: true
