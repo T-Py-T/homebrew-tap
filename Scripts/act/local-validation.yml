@@ -1,0 +1,12 @@
+name: Portable local validation
+on:
+  pull_request:
+# Stored outside .github/workflows: act only, never a hosted trigger.
+# No draft guard: local validation always executes, including draft development.
+jobs:
+  portable:
+    runs-on: local-posix
+    steps:
+      - name: Validate portable source checks
+        working-directory: ${{ env.LOCAL_REPO_PATH }}
+        run: python3 Scripts/local_checks.py --full

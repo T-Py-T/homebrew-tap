@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+repo=$(git rev-parse --show-toplevel)
+export PRE_COMMIT_HOME="$repo/.local-validation.noindex/pre-commit-cache"
+exec pre-commit run --hook-stage pre-commit --config "$repo/.pre-commit-config.yaml"

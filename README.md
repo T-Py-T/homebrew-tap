@@ -104,6 +104,10 @@ sync now, `r` for a recurring schedule, `g` for Google calendar settings. The
 Cask also states that the binary is Developer ID signed and notarized. It
 keeps normal quarantine metadata and has no Gatekeeper bypass hook.
 
+## Focus Owned preparation
+
+[`Templates/focus-owned.rb.tmpl`](Templates/focus-owned.rb.tmpl) prepares an Apple-silicon app and CLI package using private release downloads. It is not installable until a qualified release and checksum exist. See the [release and update handoff](docs/FOCUS_OWNED.md).
+
 ## How it's built
 
 ```text
@@ -122,7 +126,7 @@ rules.
 
 ## Validate a change
 
-Run Homebrew's tap checks before opening a pull request:
+Use the [repo-local hooks and act gate](docs/LOCAL_VALIDATION.md) during draft development. Before release metadata is ready for review, run the full tap checks in an isolated checkout with the existing approved tool context:
 
 ```sh
 brew test-bot --only-tap-syntax --tap=T-Py-T/tap
@@ -131,7 +135,7 @@ brew test-bot --only-tap-syntax --tap=T-Py-T/tap
 This runs `brew style`, `brew readall` for all OSes and architectures, and
 `brew audit --tap`. It checks the tap as installed under Homebrew's `Taps`
 directory. The pull-request workflow runs the same gate on the PR's exact
-commit. It doesn't run on pushes, schedules or manual dispatches.
+commit once the PR is ready for review. Draft opened/updated PRs skip the validation job; no runner is allocated. It doesn't run on pushes, schedules or manual dispatches.
 
 ## Add or update a package
 

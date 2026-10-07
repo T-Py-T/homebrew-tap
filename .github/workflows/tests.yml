@@ -6,6 +6,7 @@ on:
 
 jobs:
   test-bot:
+    if: github.event_name == 'pull_request' && github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -22,3 +23,6 @@ jobs:
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: brew test-bot --only-tap-syntax --tap=t-py-t/tap
+
+      - name: Validate Focus Owned template syntax
+        run: ruby -c Templates/focus-owned.rb.tmpl
