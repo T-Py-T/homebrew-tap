@@ -1,0 +1,51 @@
+# frozen_string_literal: true
+
+# Non-installable template. Copy to Casks/berea.rb only after a signed, notarized
+# major-release ZIP exists with a real version and SHA-256. Do not fill VERSION
+# with 1.0.0, and do not call the current app stable, until the Graph
+# search-click related nodes path works on that release.
+cask "berea" do
+  require_relative "../lib/mac_ogcs_private_repository_release_download_strategy"
+
+  version "VERSION"
+
+  on_macos do
+    on_arm do
+      sha256 "SHA256_ARM64"
+      url "https://github.com/T-Py-T/Berea/releases/download/v#{version}/Berea_#{version}_darwin_arm64.zip",
+          using: MacOgcsPrivateRepositoryReleaseDownloadStrategy
+    end
+    on_intel do
+      sha256 "SHA256_X64"
+      url "https://github.com/T-Py-T/Berea/releases/download/v#{version}/Berea_#{version}_darwin_x64.zip",
+          using: MacOgcsPrivateRepositoryReleaseDownloadStrategy
+    end
+  end
+
+  name "Berea"
+  desc "Owner Mac app for the local knowledge store, rooms, and graph"
+  homepage "https://github.com/T-Py-T/Berea"
+
+  livecheck do
+    skip "Updated only when a reviewed major release asset exists."
+  end
+
+  depends_on :macos
+
+  app "Berea.app"
+
+  zap :not_required
+
+  caveats <<~EOS
+    Private downloads require HOMEBREW_GITHUB_API_TOKEN with read access to
+    T-Py-T/Berea. This Cask installs Berea.app only. The loopback service
+    (com.berea.service on 127.0.0.1:4318) is a separate install.
+
+    Quit Berea.app before `brew upgrade --cask`. An upgrade replaces the app
+    bundle. The knowledge store, rooms data, and Keychain token stay put.
+
+    After install, run the desktop setup-token command so the Keychain item
+    admits /Applications/Berea.app. This Cask keeps quarantine metadata and
+    does not bypass Gatekeeper.
+  EOS
+end
